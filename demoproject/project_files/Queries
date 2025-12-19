@@ -1,0 +1,33 @@
+'CREATE TABLE `course` (
+  `course_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `instructor` varchar(20) NOT NULL,
+  `duration` decimal(6,2) NOT NULL,
+  `fees` decimal(10,2) NOT NULL,
+  `description` tinytext NOT NULL,
+  `course_image` longblob NOT NULL,
+  PRIMARY KEY (`course_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci'
+
+'CREATE TABLE `topics` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `course_id` int DEFAULT NULL,
+  `title` mediumtext NOT NULL,
+  `description` longtext NOT NULL,
+  `order` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `course _id_idx` (`course_id`),
+  CONSTRAINT `course _id` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci'
+
+
+CREATE TABLE `user` (
+  `username` varchar(40) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `confirmpassword` varchar(45) NOT NULL,
+  `role` varchar(45) NOT NULL,
+  PRIMARY KEY (`username`),
+  UNIQUE KEY `user name_UNIQUE` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
